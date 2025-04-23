@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./app
+    container_name: node_app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - mongodb
+    networks:
+      - app_network
+
+  db:
+    build: ../ProjetoFAQ_ADS/db
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: aluno_unifaat
+      POSTGRES_PASSWORD: aluno_unifaat
+      POSTGRES_DB: satisfacao
+    ports:
+      - "5432:5432"
+    networks:
+      - app_network
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongo_container
+    ports:
+      - "27017:27017"
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
