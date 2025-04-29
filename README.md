@@ -1,12 +1,32 @@
 # ProjetoFAQ_ADS
 Projeto voltado para a criação de um sistema de satisfação dos alunos do curso de Análise e Desenvolvimento de Sistemas da Unifaat
 
-# Ambiente
+# Ambiente e Estrutura
 
-O projeto conta com 03 dockers diferentes, sendo 01 docker de Node.js e os outros de MongoDB e Postgres, respectivamente. Eles são conectados entre si através de uma rede (network). Com o docker-compose.yml, é possível iniciar e controlar esses ambientes
+O projeto conta com alguns componentes essenciais:
+
+- **Containers Docker**: Temos 03 dockers na nossa aplicação, sendo eles o docker de PostgresSQL que é o nosso banco relacional para armazenar os dados estruturados, o MongoDB que é o nosso banco NoSQL para armazenar os dados escaláveis, flexíveis e o Node.js que é o nosso servidor que executa a aplicação
+
+Além dos dockers, também temos o código fonte com os arquivos `package.json` e (`app.js`) que gerenciam essas dependências
 
 # Como executá-lo
 
-É preciso criar um Dockerfile com a "receita" da imagem e, para criar a imagem, é necessário usar o comando docker build -t
+**Primeiro, clone o seu repositório remoto na sua máquina:**
 
-Já o docker-compose orquestra todos os contâineres e, para executá-lo, é preciso usar o comando docker-compose up -d
+```bash
+   git clone <repository-url>
+```
+
+**Em seguida, é preciso criar a imagem dentro do arquivo Dockerfile:**
+
+```
+docker build -t <nome_da_imagem>
+```
+
+**Dentro do diretório raiz, precisamos executar o docker-compose, responsável pela orquestração desses containers:**
+
+```
+docker-compose up -d 
+```
+
+**Após executar os containers, você pode entrar em `http://localhost:3000` para acessar a aplicação**
