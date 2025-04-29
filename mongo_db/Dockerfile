@@ -1,6 +1,5 @@
-FROM mongodb:5.0.31-ubi8
+FROM mongodb:latest
 
-ENV MONGO_INITDB_DB=satisfacao
 ENV MONGO_INITDB_ROOT_USERNAME=aluno_unifaat
 ENV MONGO_INITDB_ROOT_PASSWORD=aluno_unifaat
 
